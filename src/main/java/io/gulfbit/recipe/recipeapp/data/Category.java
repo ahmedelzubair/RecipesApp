@@ -1,5 +1,7 @@
 package io.gulfbit.recipe.recipeapp.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -30,6 +32,7 @@ public class Category {
         this.description = description;
     }
 
+    @JsonIgnore
     public Set<Recipe> getRecipes() {
         return recipes;
     }

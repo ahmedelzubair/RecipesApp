@@ -1,5 +1,7 @@
 package io.gulfbit.recipe.recipeapp.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,8 +10,12 @@ public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne
+    private Recipe recipe;
+
     @Lob
-    private String notes;
+    private String recipeNotes;
 
     public Long getId() {
         return id;
@@ -19,11 +25,21 @@ public class Notes {
         this.id = id;
     }
 
-    public String getNotes() {
-        return notes;
+    @JsonIgnore
+    public Recipe getRecipe() {
+        return recipe;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+        recipe.setNotes(this);
+    }
+
+    public String getRecipeNotes() {
+        return recipeNotes;
+    }
+
+    public void setRecipeNotes(String recipeNotes) {
+        this.recipeNotes = recipeNotes;
     }
 }

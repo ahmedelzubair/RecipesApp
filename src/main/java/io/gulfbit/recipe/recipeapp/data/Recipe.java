@@ -1,8 +1,8 @@
 package io.gulfbit.recipe.recipeapp.data;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
-
 @Entity
 public class Recipe {
 
@@ -10,33 +10,48 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String description;
     private Integer prepTime;
     private Integer cookTime;
-    private Integer serving;
+    private Integer servings;
     private String source;
-    private String direction;
-    private String description;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Notes notes;
+    private String url;
+
     @Lob
-    private Byte[] imageUrl;
+    private String directions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients = new HashSet<>();
+
+    @Lob
+    private Byte[] image;
+
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Notes notes;
+
     @ManyToMany
-    @JoinTable(name = "recipe_category",joinColumns = @JoinColumn(name = "recipe_id") ,
+    @JoinTable(name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
+
+    public Long getId() {
+        return id;
+    }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId() {
-        return id;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getPrepTime() {
@@ -55,12 +70,12 @@ public class Recipe {
         this.cookTime = cookTime;
     }
 
-    public Integer getServing() {
-        return serving;
+    public Integer getServings() {
+        return servings;
     }
 
-    public void setServing(Integer serving) {
-        this.serving = serving;
+    public void setServings(Integer servings) {
+        this.servings = servings;
     }
 
     public String getSource() {
@@ -71,28 +86,28 @@ public class Recipe {
         this.source = source;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getUrl() {
+        return url;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDirections() {
+        return directions;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDirections(String directions) {
+        this.directions = directions;
     }
 
-    public Byte[] getImageUrl() {
-        return imageUrl;
+    public Byte[] getImage() {
+        return image;
     }
 
-    public void setImageUrl(Byte[] imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(Byte[] image) {
+        this.image = image;
     }
 
     public Notes getNotes() {
@@ -101,8 +116,13 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
-
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
+    }
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
