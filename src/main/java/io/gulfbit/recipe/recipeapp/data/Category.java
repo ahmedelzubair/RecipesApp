@@ -1,10 +1,12 @@
 package io.gulfbit.recipe.recipeapp.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@Data
 @Entity
 public class Category {
 
@@ -16,28 +18,9 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @JsonIgnore
     public Set<Recipe> getRecipes() {
         return recipes;
     }
 
-    public void setRecipes(Set<Recipe> recipes) {
-        this.recipes = recipes;
-    }
 }
