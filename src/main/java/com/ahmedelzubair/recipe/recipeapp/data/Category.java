@@ -1,12 +1,15 @@
-package io.gulfbit.recipe.recipeapp.data;
+package com.ahmedelzubair.recipe.recipeapp.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@EqualsAndHashCode(exclude = "recipes")
 @Entity
 public class Category {
 
@@ -16,11 +19,6 @@ public class Category {
     private String description;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Recipe> recipes;
-
-    @JsonIgnore
-    public Set<Recipe> getRecipes() {
-        return recipes;
-    }
+    private Set<Recipe> recipes = new HashSet<>();
 
 }

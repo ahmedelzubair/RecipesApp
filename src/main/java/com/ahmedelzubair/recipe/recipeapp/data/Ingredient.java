@@ -1,4 +1,4 @@
-package io.gulfbit.recipe.recipeapp.data;
+package com.ahmedelzubair.recipe.recipeapp.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

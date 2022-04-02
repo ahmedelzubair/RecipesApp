@@ -1,7 +1,7 @@
-package io.gulfbit.recipe.recipeapp.service;
+package com.ahmedelzubair.recipe.recipeapp.service;
 
-import io.gulfbit.recipe.recipeapp.data.Recipe;
-import io.gulfbit.recipe.recipeapp.repositories.RecipeRepository;
+import com.ahmedelzubair.recipe.recipeapp.repositories.RecipeRepository;
+import com.ahmedelzubair.recipe.recipeapp.data.Recipe;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

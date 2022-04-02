@@ -1,4 +1,4 @@
-package io.gulfbit.recipe.recipeapp.data;
+package com.ahmedelzubair.recipe.recipeapp.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -21,13 +21,4 @@ public class Notes {
     @Lob
     private String recipeNotes;
 
-    @JsonIgnore
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-        recipe.setNotes(this);
-    }
 }

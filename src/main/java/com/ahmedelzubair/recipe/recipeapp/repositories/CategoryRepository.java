@@ -1,6 +1,6 @@
-package io.gulfbit.recipe.recipeapp.repositories;
+package com.ahmedelzubair.recipe.recipeapp.repositories;
 
-import io.gulfbit.recipe.recipeapp.data.Category;
+import com.ahmedelzubair.recipe.recipeapp.data.Category;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

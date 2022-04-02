@@ -1,4 +1,4 @@
-package io.gulfbit.recipe.recipeapp.data;
+package com.ahmedelzubair.recipe.recipeapp.data;
 
 import lombok.Data;
 

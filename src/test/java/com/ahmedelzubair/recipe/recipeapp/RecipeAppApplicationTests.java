@@ -1,4 +1,4 @@
-package io.gulfbit.recipe.recipeapp;
+package com.ahmedelzubair.recipe.recipeapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

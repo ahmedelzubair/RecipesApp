@@ -1,4 +1,4 @@
-package io.gulfbit.recipe.recipeapp;
+package com.ahmedelzubair.recipe.recipeapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
